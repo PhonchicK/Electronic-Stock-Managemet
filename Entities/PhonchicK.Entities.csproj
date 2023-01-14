@@ -41,7 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\Capacitor.cs" />
+    <Compile Include="Concrete\Category.cs" />
+    <Compile Include="Concrete\Datasheet.cs" />
+    <Compile Include="Concrete\IntegratedCircuit.cs" />
+    <Compile Include="Concrete\OtherObject.cs" />
+    <Compile Include="Concrete\PinType.cs" />
     <Compile Include="Concrete\Resistor.cs" />
+    <Compile Include="Concrete\Transistor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

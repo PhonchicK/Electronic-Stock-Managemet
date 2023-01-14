@@ -41,11 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICapasitorDal.cs" />
+    <Compile Include="Abstract\ICategoryDal.cs" />
+    <Compile Include="Abstract\IDatasheetDal.cs" />
+    <Compile Include="Abstract\IIntegratedCircuitDal.cs" />
+    <Compile Include="Abstract\IOtherObjectDal.cs" />
+    <Compile Include="Abstract\IPinTypeDal.cs" />
+    <Compile Include="Abstract\IResistorDal.cs" />
+    <Compile Include="Abstract\ITransistorDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Abstract\" />
     <Folder Include="Concrete\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0A2657A5-020E-46AE-A684-BC5EE350FD2E}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\PhonchicK.Entities.csproj">
+      <Project>{648530AB-50D8-40A8-832E-2EA7CB0C2256}</Project>
+      <Name>PhonchicK.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

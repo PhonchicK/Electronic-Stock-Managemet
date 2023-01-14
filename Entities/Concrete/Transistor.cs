@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace PhonchicK.Entities.Concrete
 {
-    public class Resistor : IEntity
+    public class Transistor : IEntity
     {
         public int ID { get; set; }
-        public float Resistance { get; set; }
-        public int Tolerance { get; set; }
-        public int BandCount { get; set; }
-        public float Power { get; set; }
+        public string Model { get; set; }
+        public float Amper { get; set; }
+        public float Voltage { get; set; }
+        public string Description { get; set; }
+        public int DatasheetID { get; set; }
         public int PinTypeID { get; set; }
 
+        public virtual Datasheet Datasheet { get; set; }
         public virtual PinType PinType { get; set; }
     }
 }
