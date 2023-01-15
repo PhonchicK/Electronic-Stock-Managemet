@@ -59,6 +59,24 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
+        public List<TEntity> GetPage(Expression<Func<TEntity, bool>> filter = null, int page = 1, int itemByPage = 10)
+        {
+            using (TContext context = new TContext())
+            {
+                return filter == null ? context.Set<TEntity>().Skip((page - 1) * itemByPage).Take(itemByPage).ToList()
+                    : context.Set<TEntity>().Where(filter).Skip((page - 1) * itemByPage).Take(itemByPage).ToList();
+            }     
+        }
+
+        public int GetPageCount(Expression<Func<TEntity, bool>> filter = null, int itemByPage = 10)
+        {
+            using (TContext context = new TContext())
+            {
+                var count = context.Set<TEntity>().Count(filter);
+                return ((int)count / itemByPage) + (count % itemByPage != 0 ? 1 : 0);
+            }     
+        }
+
         public virtual void Update(TEntity entity)
         {
             using (TContext context = new TContext())
