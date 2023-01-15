@@ -17,6 +17,6 @@ namespace Core.DataAccess
         int Count(Expression<Func<Entity, bool>> filter = null);
         //Pagination
         List<Entity> GetPage(Expression<Func<Entity, bool>> filter = null, int page = 1, int itemByPage = 10);
-        int GetPageCount(Expression<Func<Entity, bool>> filter = null);
+        int GetPageCount(Expression<Func<Entity, bool>> filter = null, int itemByPage = 10);
     }
 }

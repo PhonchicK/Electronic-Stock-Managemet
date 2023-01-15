@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PhonchicK.DataAccess.Abstract
 {
-    public interface ICapasitorDal : IEntityRepository<Capacitor>
+    public interface ICapacitorDal : IEntityRepository<Capacitor>
     {
     }
 }
