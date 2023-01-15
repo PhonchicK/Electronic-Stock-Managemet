@@ -13,6 +13,7 @@ namespace PhonchicK.Business.Abstract
         void Update(PinType pinType);
         void Delete(PinType pinType);
         List<PinType> GetByPage(int page = 1, int itemByPage = 10);
+        int GetPageCount();
         PinType Get(int id);
     }
 }

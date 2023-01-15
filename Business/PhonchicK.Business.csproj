@@ -49,15 +49,29 @@
     <Compile Include="Abstract\IPinTypeService.cs" />
     <Compile Include="Abstract\IResistorService.cs" />
     <Compile Include="Abstract\ITransistorService.cs" />
+    <Compile Include="Concrete\CapacitorManager.cs" />
+    <Compile Include="Concrete\CategoryManager.cs" />
+    <Compile Include="Concrete\DatasheetManager.cs" />
+    <Compile Include="Concrete\IntegratedCircuitManager.cs" />
+    <Compile Include="Concrete\OtherObjectManager.cs" />
+    <Compile Include="Concrete\PinTypeManager.cs" />
+    <Compile Include="Concrete\ResistorManager.cs" />
+    <Compile Include="Concrete\TransistorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Concrete\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0A2657A5-020E-46AE-A684-BC5EE350FD2E}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\PhonchicK.Entities.csproj">
       <Project>{648530AB-50D8-40A8-832E-2EA7CB0C2256}</Project>
       <Name>PhonchicK.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhonchicK.DataAccess\PhonchicK.DataAccess.csproj">
+      <Project>{FAC5BCC2-8936-42F7-A633-F8B2F39F2061}</Project>
+      <Name>PhonchicK.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

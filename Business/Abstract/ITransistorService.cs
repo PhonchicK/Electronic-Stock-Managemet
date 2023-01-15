@@ -13,6 +13,7 @@ namespace PhonchicK.Business.Abstract
         void Update(Transistor transistor);
         void Delete(Transistor transistor);
         List<Transistor> GetByPage(int page = 1, int itemByPage = 10);
+        int GetPageCount();
         Transistor Get(int id);
     }
 }

@@ -14,6 +14,7 @@ namespace PhonchicK.Business.Abstract
         void Update(Capacitor capacitor);
         void Delete(Capacitor capacitor);
         List<Capacitor> GetByPage(int page = 1, int itemByPage = 10);
+        int GetPageCount();
         Capacitor Get(int id);
     }
 }

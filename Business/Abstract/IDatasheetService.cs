@@ -13,6 +13,7 @@ namespace PhonchicK.Business.Abstract
         void Update(Datasheet datasheet);
         void Delete(Datasheet datasheet);
         List<Datasheet> GetByPage(int page = 1, int itemByPage = 10);
+        int GetPageCount();
         Datasheet Get(int id);
     }
 }

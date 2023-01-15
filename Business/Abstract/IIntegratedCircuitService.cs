@@ -13,6 +13,7 @@ namespace PhonchicK.Business.Abstract
         void Update(IntegratedCircuit integratedCircuit);
         void Delete(IntegratedCircuit integratedCircuit);
         List<IntegratedCircuit> GetByPage(int page = 1, int itemByPage = 10);
+        int GetPageCount();
         IntegratedCircuit Get(int id);
     }
 }

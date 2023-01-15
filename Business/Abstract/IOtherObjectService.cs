@@ -13,6 +13,7 @@ namespace PhonchicK.Business.Abstract
         void Update(OtherObject otherObject);
         void Delete(OtherObject otherObject);
         List<OtherObject> GetByPage(int page = 1, int itemByPage = 10);
+        int GetPageCount();
         List<OtherObject> GetByCategory(int categoryId, int page = 1, int itemByPage = 10);
         OtherObject Get(int id);
     }
