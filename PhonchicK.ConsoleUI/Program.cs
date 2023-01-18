@@ -1,5 +1,6 @@
 ﻿using PhonchicK.Business.Abstract;
 using PhonchicK.Business.Concrete;
+using PhonchicK.ConsoleUI.Helpers;
 using PhonchicK.DataAccess.Concrete.EntityFramework;
 using PhonchicK.Entities.Concrete;
 using System;
@@ -14,13 +15,6 @@ namespace PhonchicK.ConsoleUI
     {
         static void Main(string[] args)
         {
-            IResistorService resistorService = new ResistorManager(new EfResistorDal());
-            IPinTypeService pinTypeService = new PinTypeManager(new EfPinTypeDal());
-
-            pinTypeService.Add(new PinType()
-            {
-                 Name = "0.6w Direnç"
-            });
             Console.ReadKey();
         }
     }
