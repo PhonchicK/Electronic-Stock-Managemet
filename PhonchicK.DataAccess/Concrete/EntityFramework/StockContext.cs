@@ -1,5 +1,4 @@
-﻿using MySql.Data.EntityFramework;
-using PhonchicK.Entities.Concrete;
+﻿using PhonchicK.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace PhonchicK.DataAccess.Concrete.EntityFramework
 {
-    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class StockContext : DbContext
     {
-        public StockContext () : base("server=sql105.epizy.com;port=3306;database=epiz_30375782_stock;uid=epiz_30375782;pass=xWTcAHhAKkmvuv")
+        public StockContext () : base("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=electronicstock;Integrated Security=True;")
         {
             this.Database.CreateIfNotExists();
         }

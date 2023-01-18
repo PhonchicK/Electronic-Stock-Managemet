@@ -59,7 +59,9 @@
     <Compile Include="Concrete\TransistorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{0A2657A5-020E-46AE-A684-BC5EE350FD2E}</Project>
