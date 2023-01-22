@@ -63,8 +63,8 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return filter == null ? context.Set<TEntity>().Skip((page - 1) * itemByPage).Take(itemByPage).ToList()
-                    : context.Set<TEntity>().Where(filter).Skip((page - 1) * itemByPage).Take(itemByPage).ToList();
+                return filter == null ? context.Set<TEntity>().OrderBy(e => e.ID).Skip((page - 1) * itemByPage).Take(itemByPage).ToList()
+                    : context.Set<TEntity>().Where(filter).OrderBy(e => e.ID).Skip((page - 1) * itemByPage).Take(itemByPage).ToList();
             }     
         }
 
