@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhonchicK.FormUI.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace PhonchicK.FormUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainPage());
         }
     }
 }

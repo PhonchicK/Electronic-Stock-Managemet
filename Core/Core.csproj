@@ -122,6 +122,15 @@
     <Compile Include="Entities\IDto.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilites\Electronic\Resistor\CalculateResistor.cs" />
+    <Compile Include="Utilites\Electronic\Resistor\ResistorColor.cs" />
+    <Compile Include="Utilites\Electronic\Resistor\ResistorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilites\Electronic\Resistor\ResistorControl.Designer.cs">
+      <DependentUpon>ResistorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilites\Electronic\Resistor\ResistorStrip.cs" />
     <Compile Include="Utilites\Security\Encryption\EncryptionHelper.cs" />
     <Compile Include="Utilites\Security\Hashing\PasswordHashingHelper.cs" />
   </ItemGroup>
@@ -129,7 +138,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Utilites\Electronic\Resistor\ResistorControl.resx">
+      <DependentUpon>ResistorControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
