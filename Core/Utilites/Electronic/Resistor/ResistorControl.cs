@@ -12,6 +12,22 @@ namespace Core.Utilites.Electronic.Resistor
 {
     public partial class ResistorControl : UserControl
     {
+        //public Settings
+        public int BandCount
+        {
+            get
+            {
+                return this.BandCount;
+            }
+            set
+            {
+                
+                this.BandCount = value;
+            }
+        }
+        public float Resistance { get; set; }
+        public int Tolerance { get; set; }
+
         //Colors
         private Color ResistorPinColor = Color.FromArgb(255, 98, 97, 95);
         private Color ResisotorBackColor = Color.FromArgb(255, 234, 182, 118);

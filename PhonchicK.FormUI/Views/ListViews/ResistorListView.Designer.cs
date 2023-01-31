@@ -102,8 +102,10 @@
             // 
             // resistorControl1
             // 
+            this.resistorControl1.BandCount = 4;
             this.resistorControl1.Location = new System.Drawing.Point(410, 22);
             this.resistorControl1.Name = "resistorControl1";
+            this.resistorControl1.Resistance = 0F;
             this.resistorControl1.Size = new System.Drawing.Size(378, 222);
             this.resistorControl1.TabIndex = 1;
             // 
