@@ -13,18 +13,7 @@ namespace Core.Utilites.Electronic.Resistor
     public partial class ResistorControl : UserControl
     {
         //public Settings
-        public int BandCount
-        {
-            get
-            {
-                return this.BandCount;
-            }
-            set
-            {
-                
-                this.BandCount = value;
-            }
-        }
+        public int BandCount { get; set; }
         public float Resistance { get; set; }
         public int Tolerance { get; set; }
 
@@ -49,7 +38,16 @@ namespace Core.Utilites.Electronic.Resistor
             InitializeComponent();
             resistorBitmap = new Bitmap(512,256);
             this.DrawResistor();
-            //this.DrawStrips();
+
+            /*this.resistorStrips = new ResistorStrip[]
+            {
+                new ResistorStrip(ResistorColor.Black),
+                new ResistorStrip(ResistorColor.Black),
+                new ResistorStrip(ResistorColor.Black),
+                new ResistorStrip(ResistorColor.Gold)
+            };
+
+            this.DrawStrips();*/
         }
         private void resistorSetPixel(int x, int y, Color color)
         {
@@ -94,11 +92,39 @@ namespace Core.Utilites.Electronic.Resistor
                                 this.resistorStrips[i - 1].GetColor());
             }
         }
+        private int GetStripIndexAtPos(Point point)
+        {
+            float valX = (float)resistorBitmap.Width / resistorImage.Width;
+            float valY = (float)resistorBitmap.Height / resistorImage.Height;
 
+            Point posInBitmap = new Point((int)(valX * point.X), (int)(valY * point.Y));
+
+            int startX = (resistorBitmap.Width / 2) - (this.resistorBaseWidth / 2);
+
+            int value = (this.resistorBaseWidth - this.StripWidth * this.resistorStrips.Count()) / this.resistorStrips.Count();
+
+            for (int i = 1; i <= this.resistorStrips.Length; i++)
+            {
+                bool xIn = ((value * i + startX - this.StripWidth) < posInBitmap.X) &&
+                           (((value * i + startX - this.StripWidth) + this.StripWidth) > posInBitmap.X);
+
+                bool yIn = ((this.resistorBitmap.Height / 2) - (this.resistorBaseHeight / 2) < posInBitmap.Y) &&
+                           (((this.resistorBitmap.Height / 2) - (this.resistorBaseHeight / 2) + this.resistorBaseHeight) > posInBitmap.Y);
+
+                if (xIn && yIn)
+                    return i - 1;
+            }
+
+            return -1;
+        }
+
+        private void resistorImage_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show(GetStripIndexAtPos(e.Location).ToString());
+        }
 
         private void ResistorControl_Load(object sender, EventArgs e)
         {
-            
         }
     }
 }

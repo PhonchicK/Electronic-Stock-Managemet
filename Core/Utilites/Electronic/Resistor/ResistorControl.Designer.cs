@@ -41,12 +41,14 @@
             this.resistorImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.resistorImage.TabIndex = 0;
             this.resistorImage.TabStop = false;
+            this.resistorImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.resistorImage_MouseClick);
             // 
             // ResistorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.resistorImage);
+            this.MinimumSize = new System.Drawing.Size(378, 222);
             this.Name = "ResistorControl";
             this.Size = new System.Drawing.Size(378, 222);
             this.Load += new System.EventHandler(this.ResistorControl_Load);
