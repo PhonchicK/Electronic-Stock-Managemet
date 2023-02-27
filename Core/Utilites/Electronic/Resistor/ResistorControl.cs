@@ -29,9 +29,29 @@ namespace Core.Utilites.Electronic.Resistor
         private int resistorBaseHeight = 150;
         private int StripWidth = 10;
 
-
+        private int selectedStripIndex = -1;
         private ResistorStrip[] resistorStrips;
         private Bitmap resistorBitmap;
+
+        //Resistor Strip Colors
+        List<ResistorColor> resistorBaseColors = new List<ResistorColor>
+        {
+            ResistorColor.Black,
+            ResistorColor.Brown,
+            ResistorColor.Red,
+            ResistorColor.Orange,
+            ResistorColor.Yellow,
+            ResistorColor.Green,
+            ResistorColor.Blue,
+            ResistorColor.Purple,
+            ResistorColor.Grey,
+            ResistorColor.White
+        };
+        List<ResistorColor> resistorToleranceColors = new List<ResistorColor>
+        {
+            ResistorColor.Gold,
+            ResistorColor.Silver
+        };
 
         public ResistorControl()
         {
@@ -39,15 +59,15 @@ namespace Core.Utilites.Electronic.Resistor
             resistorBitmap = new Bitmap(512,256);
             this.DrawResistor();
 
-            /*this.resistorStrips = new ResistorStrip[]
+            this.resistorStrips = new ResistorStrip[]
             {
                 new ResistorStrip(ResistorColor.Black),
-                new ResistorStrip(ResistorColor.Black),
+                new ResistorStrip(ResistorColor.Blue),
                 new ResistorStrip(ResistorColor.Black),
                 new ResistorStrip(ResistorColor.Gold)
             };
 
-            this.DrawStrips();*/
+            this.DrawStrips();
         }
         private void resistorSetPixel(int x, int y, Color color)
         {
@@ -120,11 +140,62 @@ namespace Core.Utilites.Electronic.Resistor
 
         private void resistorImage_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(GetStripIndexAtPos(e.Location).ToString());
+            List<ResistorColor> resistorColors = new List<ResistorColor>();
+            int stripIndex = GetStripIndexAtPos(e.Location);
+
+            this.selectedStripIndex = stripIndex;
+
+            if (stripIndex == -1)
+            {
+                this.colorsComboBox.DataSource = null;
+                return;
+            }
+
+
+            if (this.resistorStrips.Length - 1 != stripIndex)
+                resistorColors.AddRange(this.resistorBaseColors);
+            resistorColors.AddRange(this.resistorToleranceColors);
+
+            this.colorsComboBox.SelectedIndexChanged -= this.colorsComboBox_SelectedIndexChanged;
+            this.colorsComboBox.DataSource = resistorColors;
+
+            this.colorsComboBox.SelectedItem = this.resistorStrips[stripIndex].StripColor;
+            this.colorsComboBox.SelectedIndexChanged += this.colorsComboBox_SelectedIndexChanged;
         }
 
         private void ResistorControl_Load(object sender, EventArgs e)
         {
+        }
+
+
+        private void colorsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(this.selectedStripIndex != -1)
+            {
+                this.resistorStrips[this.selectedStripIndex].StripColor = (ResistorColor)this.colorsComboBox.SelectedItem;
+                this.DrawStrips();
+            }
+        }
+
+        private void resistanceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(resistanceTextBox.Text))
+            {
+                return;
+            }
+
+            ResistorColor[] colors = CalculateResistor.ResistanceToColors(Convert.ToDouble(resistanceTextBox.Text), 5, 4);
+
+            for (int i = 0; i < this.resistorStrips.Count(); i++)
+            {
+                this.resistorStrips[i].StripColor = colors[i];
+            }
+
+            if(selectedStripIndex != -1)
+                this.colorsComboBox.SelectedItem = this.resistorStrips[selectedStripIndex].StripColor;
+
+            this.DrawStrips();
+
         }
     }
 }
